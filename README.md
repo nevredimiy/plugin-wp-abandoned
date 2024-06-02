@@ -1,7 +1,5 @@
 # Custom Plugin for WP. Left orders from Woocommerce
 
-Simple overview of use/purpose.
-
 ## Description
 
 This plugin collects customer data on the checkout page.

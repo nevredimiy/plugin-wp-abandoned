@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 	var $locHref = window.location.href
-	if ($locHref == 'https://larpradeda.com.ua/checkout/' || $locHref == 'https://larpradeda.com.ua/ru/checkout-2/') {
+	if ($locHref == myPlugin.href_checkout) {
 		getClientData();
 	}
 	function getClientData() {

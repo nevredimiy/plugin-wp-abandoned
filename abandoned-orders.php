@@ -30,6 +30,7 @@ function abandoned_assets() {
     wp_enqueue_script( 'abandoned-orders', plugins_url( '/assets/abandoned-script.js', __FILE__ ), array('jquery') );
 	wp_localize_script('abandoned-orders', 'myPlugin', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
+		'href_checkout' => wc_get_checkout_url(),
 	));
 }
 
