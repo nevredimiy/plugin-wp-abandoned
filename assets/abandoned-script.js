@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
 		getClientData();
 	}
 	function getClientData() {
-		$('#billing_phone').on('blur', function (e) {
+		$('#billing_phone').on('blur touchend', function (e) {
 			let firstName = $('#billing_first_name').val();
 			let lastName = $('#billing_last_name').val();
 			let phone = $('#billing_phone').val();

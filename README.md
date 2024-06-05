@@ -3,7 +3,7 @@
 ## Description
 
 This plugin collects customer data on the checkout page.
-The data is written to a text file by the "onblur" event from the "billing_phone" input field. The data will be recorded regardless of whether the order is submit or not
+The data is written to a database by the "onblur" event from the "billing_phone" input field. The data will be recorded regardless of whether the order is submit or not
 
 ## Getting Started
 
@@ -14,19 +14,21 @@ The data is written to a text file by the "onblur" event from the "billing_phone
 
 ### Installing
 
-* The contents of the folder must be archived. Install in the usual way as a plugin for WordPress
-* You may need to make the client_data_log.txt file accessible as 777. This is done on the server where the site is hosted
+* The contents of the folder must be archived. Install in the usual way as a plugin for WordPress. Another way is to copy the files to the plugins folder on the server.
 * That's all !
 
 ### Executing program
 
 * After installation, a menu item for the plugin should appear in the admin menu - Abandoned. Here you can view the result of the plugin
-* The plugin will write data to a text file after the onblur event on the billing_phone input field.
+* The plugin will write data after the onblur event on the billing_phone input field.
 * Fields that will be written to the file:
 - First name,
 - Last name,
 - phone number,
-- email address
+- email address,
+- product,
+- price product,
+- datetime
 
 ## Help
 
