@@ -5,3 +5,9 @@
 h1 {
     font-weight: 600;
 }
+table, th, td{
+    border: 1px solid black;
+}
+tr, td {
+    padding: 10px 20px;
+}

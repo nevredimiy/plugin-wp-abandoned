@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 	var $locHref = window.location.href
-	if ($locHref == myPlugin.href_checkout) {
+	if ($locHref == abandonedPlugin.href_checkout) {
 		getClientData();
 	}
 	function getClientData() {
@@ -9,18 +9,23 @@ jQuery(document).ready(function ($) {
 			let lastName = $('#billing_last_name').val();
 			let phone = $('#billing_phone').val();
 			let email = $('#billing_email').val();
+			let productName = $('td.product-name').text();
+			let price = $('td.product-total').text();
 			let dNow = (new Date()).toISOString().split('.')[0];
 
 			var data = {
-			action: 'get_client_data',
-			firstName: firstName,
-			lastName: lastName,
-			phone: phone,
-			email: email,
-			dNow: dNow,
+				action: 'get_client_data',
+				nonce:abandonedPlugin.nonce,
+				firstName: firstName,
+				lastName: lastName,
+				phone: phone,
+				email: email,
+				productName: productName,
+				price: price,
+				dNow: dNow,
 			}
 
-			jQuery.post(myPlugin.ajaxurl, data);
+			jQuery.post(abandonedPlugin.ajaxurl, data);
 
 		})
 
