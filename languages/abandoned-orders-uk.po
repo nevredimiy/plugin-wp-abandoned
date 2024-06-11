@@ -1,0 +1,92 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: abandoned 1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
+"POT-Creation-Date: 2024-06-11 12:47+0300\n"
+"PO-Revision-Date: 2024-06-11 15:51+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;esc_html__;e_;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: abandoned-orders.php:115 abandoned-orders.php:117
+msgid "Abandoned orders"
+msgstr "Кинуті замовлення"
+
+#: abandoned-orders.php:115
+msgid "Abandoned"
+msgstr "Кинуті"
+
+#: abandoned-orders.php:117 abandoned-orders.php:118
+msgid "Settings"
+msgstr "Налаштування"
+
+#: abandoned-orders.php:169
+msgid "Choosing a selector for an element"
+msgstr "Виберіть селектор для елементу"
+
+#: abandoned-orders.php:170
+msgid "Element and trigger selection"
+msgstr "Селектори для елементу та тригеру"
+
+#: abandoned-orders.php:171
+msgid "An event that will trigger a client data record"
+msgstr "Подія, після якої записуються дані"
+
+#: abandoned-orders.php:173 assets/template/abandoned-options.php:22
+msgid "First Name"
+msgstr "Ім'я"
+
+#: abandoned-orders.php:174 assets/template/abandoned-options.php:23
+msgid "Last Name"
+msgstr "Прізвище"
+
+#: abandoned-orders.php:175 assets/template/abandoned-options.php:24
+msgid "Phone"
+msgstr "Телефон"
+
+#: abandoned-orders.php:176 assets/template/abandoned-options.php:25
+msgid "Email"
+msgstr "Пошта"
+
+#: abandoned-orders.php:177
+msgid "Product Name"
+msgstr "Назва товару"
+
+#: abandoned-orders.php:178
+msgid "Price"
+msgstr "Ціна"
+
+#: abandoned-orders.php:179
+msgid "Element"
+msgstr "Елемент"
+
+#: abandoned-orders.php:180
+msgid "Event"
+msgstr "Подія"
+
+#: assets/template/abandoned-options.php:2
+msgid "Abandoned Orders Log"
+msgstr "Таблиця покинутих замовлень"
+
+#: assets/template/abandoned-options.php:26
+msgid "Product name"
+msgstr "Назва товару"
+
+#: assets/template/abandoned-options.php:27
+msgid "Total price"
+msgstr "Підсумкова ціна"
+
+#: assets/template/abandoned-options.php:28
+msgid "Time"
+msgstr "Час"
+
+#: assets/template/abandoned-options.php:48
+msgid "Delete selected lines"
+msgstr "Видалити вибрані позиції"

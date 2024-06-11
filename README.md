@@ -3,7 +3,7 @@
 ## Description
 
 This plugin collects customer data on the checkout page.
-The data is written to a database by the "onblur" event from the "billing_phone" input field. The data will be recorded regardless of whether the order is submit or not
+By default, the data is written to a database by the "onblur" event from the "billing_phone" input field. The data will be recorded regardless of whether the order is submit or not. It is possible to change element selectors and the event that triggers data recording.
 
 ## Getting Started
 
@@ -41,6 +41,7 @@ Plugin made by Artem Litvinov, my telegram:
 [@artem_litvinov_8](https://t.me/artem_litvinov_8)
 
 ## Version History
-
+* 1.1
+    * Added the ability to select elements and triggers from the admin menu
 * 1.0
     * Initial Release

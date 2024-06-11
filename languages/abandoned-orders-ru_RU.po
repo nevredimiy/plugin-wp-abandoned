@@ -1,0 +1,95 @@
+# Copyright (C) 2020 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: abandoned 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
+"POT-Creation-Date: 2024-06-11 12:38+0300\n"
+"PO-Revision-Date: 2024-06-11 15:54+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Domain: _s\n"
+"X-Poedit-KeywordsList: __;esc_html__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: abandoned-orders.php:115 abandoned-orders.php:117
+msgid "Abandoned orders"
+msgstr "Брошенные заказы"
+
+#: abandoned-orders.php:115
+msgid "Abandoned"
+msgstr "Заброшка"
+
+#: abandoned-orders.php:117 abandoned-orders.php:118
+msgid "Settings"
+msgstr "Настройки"
+
+#: abandoned-orders.php:169
+msgid "Choosing a selector for an element"
+msgstr "Выберите селектор для элемента"
+
+#: abandoned-orders.php:170
+msgid "Element and trigger selection"
+msgstr "Выбор элемента и события"
+
+#: abandoned-orders.php:171
+msgid "An event that will trigger a client data record"
+msgstr "Событие, после которого начинается запись данных"
+
+#: abandoned-orders.php:173 assets/template/abandoned-options.php:22
+msgid "First Name"
+msgstr "Имя"
+
+#: abandoned-orders.php:174 assets/template/abandoned-options.php:23
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: abandoned-orders.php:175 assets/template/abandoned-options.php:24
+msgid "Phone"
+msgstr "Телефон"
+
+#: abandoned-orders.php:176 assets/template/abandoned-options.php:25
+msgid "Email"
+msgstr "Почта"
+
+#: abandoned-orders.php:177
+msgid "Product Name"
+msgstr "Имя продукта"
+
+#: abandoned-orders.php:178
+msgid "Price"
+msgstr "Цена"
+
+#: abandoned-orders.php:179
+msgid "Element"
+msgstr "Элемент"
+
+#: abandoned-orders.php:180
+msgid "Event"
+msgstr "Событие"
+
+#: assets/template/abandoned-options.php:2
+msgid "Abandoned Orders Log"
+msgstr "Таблица брошенных заказов"
+
+#: assets/template/abandoned-options.php:26
+msgid "Product name"
+msgstr "Имя продукта"
+
+#: assets/template/abandoned-options.php:27
+msgid "Total price"
+msgstr "Итоговая цена"
+
+#: assets/template/abandoned-options.php:28
+msgid "Time"
+msgstr "Время"
+
+#: assets/template/abandoned-options.php:48
+msgid "Delete selected lines"
+msgstr "Удаление выбранных позиций"

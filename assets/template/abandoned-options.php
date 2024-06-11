@@ -1,5 +1,5 @@
 <div class="wrap abandoned-options">
-    <h1>Abandoned Orders Log</h1>
+    <h1><?php echo esc_html__('Abandoned Orders Log', 'abandoned') ?></h1>
     <?php
     global $wpdb;
     $table_name = $wpdb->get_blog_prefix() . 'abandoned';
@@ -19,13 +19,13 @@
         <table>
             <tr>
                 <th></th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Product name</th>
-                <th>Total price</th>
-                <th>Time</th>
+                <th><?php echo esc_html__('First Name', 'abandoned') ?></th>
+                <th><?php echo esc_html__('Last Name', 'abandoned') ?></th>
+                <th><?php echo esc_html__('Phone', 'abandoned') ?></th>
+                <th><?php echo esc_html__('Email', 'abandoned') ?></th>
+                <th><?php echo esc_html__('Product name', 'abandoned') ?></th>
+                <th><?php echo esc_html__('Total price', 'abandoned') ?></th>
+                <th><?php echo esc_html__('Time', 'abandoned') ?></th>
             </tr>
     <?php
 
@@ -45,7 +45,7 @@
     ?>
     <tr>
         <td colspan="8">
-            <button type="submit">Удалить выбранные строки</button>
+            <button type="submit"><?php echo esc_html__('Delete selected lines', 'abandoned') ?></button>
         </td>
     </tr>
     </table>

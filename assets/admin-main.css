@@ -1,39 +1,11 @@
-        .wrap {
-            background-color: #ffffff;
-            padding: 15px 30px;
-        }
-        h1 {
-            font-weight: 600;
-        }
-        table, th, td{
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        tr, td {
-            padding: 10px 20px;
-        }
-
-        .form-table th{
-            text-align: center;
-        }
-
-        .ao-admin-menu_options{
-            padding: 15px 30px;
-            margin-top: 20px;
-            border: 1px solid #000000;
-            background-color: antiquewhite;
-            max-width: 350px;
-        }
-        .ao-admin-menu_options h2 {
-            text-align: center;
-        }
-        .ao-admin-menu_list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-        .ao-admin-menu_list li span{
-            width: 100%;
-            text-align: right;
-        }
+.wrap {
+    background-color: #ffffff;
+    padding: 15px 30px;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr, td {
+    padding: 10px 20px;
+}

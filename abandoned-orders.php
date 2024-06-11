@@ -2,13 +2,25 @@
 /*
  * Plugin Name: Abandoned Orders
  * Description: This plugin collects data from the checkout page when the "Checkout" button is clicked.
- *
  * Authot URI: https://github.com/nevredimiy
  * Author:      Artem Litvinov
+ * Text Domain: abandoned-orders
+ * Domain Path:  /languages
+ * Version: 0.5.2
+ * Requires at least: 5.9
+ * Requires PHP: 7.4
+ *  @package   abandoned-orders
  */
 if (! defined('ABSPATH')) {
 	exit;
 }
+
+add_action( 'init', 'abandoned_plugin_init' );
+
+function abandoned_plugin_init() {
+	 load_plugin_textdomain( 'abandoned-orders', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
 function my_dump($data){
 	echo '<pre>' . print_r($data, 1) . '</pre>';
 }
@@ -106,10 +118,10 @@ function abandoned_assets() {
 
 add_action( 'admin_menu', 'abandoned_admin_page');
 function abandoned_admin_page(){
-	$hook_suffix = add_menu_page( 'Abandoned orders', 'Abandoned', 'manage_options', 'abandoned-orders', 'abandoned_menu_page', plugins_url( '/assets/images/icon.png', __FILE__ ), 80 );
+	$hook_suffix = add_menu_page( __('Abandoned orders', 'abandoned-orders'), __('Abandoned', 'abandoned-orders'), 'manage_options', 'abandoned-orders', 'abandoned_menu_page', plugins_url( '/assets/images/icon.png', __FILE__ ), 80 );
 	add_action( "admin_print_scripts-{$hook_suffix}", 'abandoned_admin_scripts' );
-	add_submenu_page( 'abandoned-orders', 'Settings', 'Abandoned orders', 'manage_options', 'abandoned-orders', 'abandoned_menu_page', 1 );
-	add_submenu_page( 'abandoned-orders', 'Settings', 'Settings', 'manage_options', 'abandoned-settings', 'abandoned_settings_page', 2 );
+	add_submenu_page( 'abandoned-orders', __('Settings', 'abandoned-orders'), __('Abandoned orders', 'abandoned-orders'), 'manage_options', 'abandoned-orders', 'abandoned_menu_page', 1 );
+	add_submenu_page( 'abandoned-orders', __('Settings', 'abandoned-orders'), __('Settings', 'abandoned-orders'), 'manage_options', 'abandoned-settings', 'abandoned_settings_page', 2 );
 }
 function abandoned_menu_page(){
 	require plugin_dir_path(__FILE__) . 'assets/template/abandoned-options.php';
@@ -127,14 +139,6 @@ function abandoned_activate() {
 	abandoned_create_table ();
 }
 register_activation_hook( __FILE__, 'abandoned_activate' );
-
-function abandoned_deactivate() {
-	global $wpdb;
-    $table_name = $wpdb->prefix . 'abandoned';
-    $wpdb->query( "DROP TABLE IF EXISTS $table_name" );
-}
-register_deactivation_hook( __FILE__, 'abandoned_deactivate' );
-
 
 // Define the uninstall callback function
 function abandoned_uninstall() {
@@ -160,18 +164,18 @@ function abandoned_custom_settings() {
 	register_setting( 'abandoned_general_group', 'price' );
 	register_setting( 'abandoned_general_group', 'trigger_element' );
 	register_setting( 'abandoned_general_group', 'event_el' );
-	add_settings_section( 'abandoned_general_section', 'Choosing a selector for an element', '', 'abandoned-orders' );
-	add_settings_section( 'abandoned_trigger_section', 'Element and trigger selection', function () {
-		echo 'An event that will trigger a client data record';
+	add_settings_section( 'abandoned_general_section', __('Choosing a selector for an element', 'abandoned-orders'), '', 'abandoned-orders' );
+	add_settings_section( 'abandoned_trigger_section', __('Element and trigger selection', 'abandoned-orders'), function () {
+		echo __('An event that will trigger a client data record', 'abandoned-orders');
 	}, 'abandoned-orders' );
-	add_settings_field( 'first_name', 'First Name', 'abandoned_first_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'first_name' ) );
-	add_settings_field( 'last_name', 'Last Name', 'abandoned_last_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'last_name' ) );
-	add_settings_field( 'phone', 'Phone', 'abandoned_phone', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'phone' ) );
-	add_settings_field( 'email', 'Email', 'abandoned_email', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'email' ) );
-	add_settings_field( 'product_name', 'Product Name', 'abandoned_product_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'product_name' ) );
-	add_settings_field( 'price', 'Price', 'abandoned_price', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'price' ) );
-	add_settings_field( 'trigger_element', 'Element', 'abandoned_trigger_event', 'abandoned-orders', 'abandoned_trigger_section', array( 'label_for' => 'trigger_element' ) );
-	add_settings_field( 'event_el', 'Event', 'abandoned_event', 'abandoned-orders', 'abandoned_trigger_section' );
+	add_settings_field( 'first_name', __('First Name', 'abandoned-orders'), 'abandoned_first_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'first_name' ) );
+	add_settings_field( 'last_name', __('Last Name', 'abandoned-orders'), 'abandoned_last_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'last_name' ) );
+	add_settings_field( 'phone', __('Phone', 'abandoned-orders'), 'abandoned_phone', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'phone' ) );
+	add_settings_field( 'email', __('Email', 'abandoned-orders'), 'abandoned_email', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'email' ) );
+	add_settings_field( 'product_name', __('Product Name', 'abandoned-orders'), 'abandoned_product_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'product_name' ) );
+	add_settings_field( 'price', __('Price', 'abandoned-orders'), 'abandoned_price', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'price' ) );
+	add_settings_field( 'trigger_element', __('Element', 'abandoned-orders'), 'abandoned_trigger_event', 'abandoned-orders', 'abandoned_trigger_section', array( 'label_for' => 'trigger_element' ) );
+	add_settings_field( 'event_el', __('Event', 'abandoned-orders'), 'abandoned_event', 'abandoned-orders', 'abandoned_trigger_section' );
 }
 function abandoned_first_name() {
 	$first_name_selection = esc_attr( get_option( 'first_name' ) );
