@@ -4,12 +4,16 @@
     global $wpdb;
     $table_name = $wpdb->get_blog_prefix() . 'abandoned';
     // Delete chose rows
-    if($_POST["line"]) {
+    if(isset($_POST["line"])) {
         $ids = implode( ',', array_map( 'absint', $_POST["line"] ) );
         $wpdb->query( "DELETE FROM $table_name WHERE id IN($ids)" );
     }
-
     $data_from_table = $wpdb->get_results( "SELECT * FROM {$table_name}" );
+    // $data_from_table = [];
+    // if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) {
+    //     $data_from_table = $wpdb->get_results( "SELECT * FROM {$table_name}" );
+	// }
+
     ?>
     <form method="post">
         <table>
@@ -24,6 +28,7 @@
                 <th>Time</th>
             </tr>
     <?php
+
     foreach ($data_from_table as $value) {
         echo '<tr>';
         echo '<td><input type="checkbox" name="line[]" value="' . $value->id . '" /></td>';
@@ -36,6 +41,7 @@
         echo '<td>' . $value->time . '</td>';
         echo '</tr>';
     }
+
     ?>
     <tr>
         <td colspan="8">
