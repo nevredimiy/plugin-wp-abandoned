@@ -2,8 +2,8 @@
 
 ## Description
 
-This plugin collects customer data on the checkout page.
-By default, the data is written to a database by the "onblur" event from the "billing_phone" input field. The data will be recorded regardless of whether the order is submit or not. It is possible to change element selectors and the event that triggers data recording.
+The plugin is based on Wordpress hooks and jQuery. After installation, the plugin needs to be configured. You need to select the appropriate elements using selectors that are used in jQuery. These could be CSS selectors. For example, as elements (p, span, div, table, etc.) or as identifiers and classes (.wc-block-components-product-name, #billing_telephon), or by attributes (input[aria-label='Name')
+You can read more about [jQuery selectors](https://api.jquery.com/all-selector/)
 
 ## Getting Started
 
@@ -13,27 +13,15 @@ By default, the data is written to a database by the "onblur" event from the "bi
 * Wordpress and Woocommerce
 
 ### Installing
-
 * The contents of the folder must be archived. Install in the usual way as a plugin for WordPress. Another way is to copy the files to the plugins folder on the server.
 * That's all !
 
-### Executing program
+### For the plugins to work correctly, you need to configure it:
 
-* After installation, a menu item for the plugin should appear in the admin menu - Abandoned. Here you can view the result of the plugin
-* The plugin will write data after the onblur event on the billing_phone input field.
-* Fields that will be written to the file:
-- First name,
-- Last name,
-- phone number,
-- email address,
-- product,
-- price product,
-- datetime
-
-## Help
-
-You can change the data recording conditions. For example, change the trigger field from billing_phone to billing_email.
-To do this, you need to make changes in two files: abandoned-orders.php and /assets/abandoned-scripts.js.
+* In the admin menu, go to the plugin settings - Abandoned -> Settings;
+* In the "Tracking element selectors" section, select the appropriate selectors;
+* In the "Select element and event" section, select the element and event for which data will be recorded. There are three options: blur, focus, click;
+* Don't forget to save your changes.
 
 ## Authors
 

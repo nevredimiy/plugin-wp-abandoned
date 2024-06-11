@@ -31,7 +31,7 @@ msgid "Settings"
 msgstr "Настройки"
 
 #: abandoned-orders.php:169
-msgid "Choosing a selector for an element"
+msgid "Selectors of elements for tracking"
 msgstr "Выберите селектор для элемента"
 
 #: abandoned-orders.php:170

@@ -11,7 +11,7 @@
  * Requires PHP: 7.4
  *  @package   abandoned-orders
  */
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -21,15 +21,11 @@ function abandoned_plugin_init() {
 	 load_plugin_textdomain( 'abandoned-orders', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
-function my_dump($data){
-	echo '<pre>' . print_r($data, 1) . '</pre>';
-}
+add_action( 'wp_ajax_get_client_data', 'ajax_save_client_data' );
+add_action( 'wp_ajax_nopriv_get_client_data', 'ajax_save_client_data' );
 
-add_action('wp_ajax_get_client_data', 'ajax_save_client_data');
-add_action('wp_ajax_nopriv_get_client_data', 'ajax_save_client_data');
-
-function ajax_save_client_data(){
-	if (empty($_POST['nonce'])){
+function ajax_save_client_data() {
+	if ( empty( $_POST['nonce'] ) ) {
 		wp_die( '0' );
 	}
 
@@ -40,15 +36,15 @@ function ajax_save_client_data(){
 		"last_name" => $_POST['lastName'],
 		"phone" => $_POST['phone'],
 		"email" => $_POST['email'],
-		"product_name" => str_replace("\t", "", trim($_POST['productName'])),
-		"price" => str_replace("\t", "", trim($_POST['price'])),
+		"product_name" => str_replace( "\t", "", trim( $_POST['productName'] ) ),
+		"price" => str_replace( "\t", "", trim( $_POST['price'] ) ),
 		"time" => $_POST['dNow']
 	);
-	insert_table_data($arr_data);
+	insert_table_data( $arr_data );
 	wp_die();
 }
 
-function abandoned_create_table () {
+function abandoned_create_table() {
 	global $wpdb;
   	$charset_collate = $wpdb->get_charset_collate();
 	$table_name = $wpdb->prefix . "abandoned";
@@ -67,14 +63,13 @@ function abandoned_create_table () {
 	dbDelta( $sql );
 }
 
-
-function insert_table_data($arr_data) {
+function insert_table_data( $arr_data ) {
 
 	global $wpdb;
 
 	$table_name = $wpdb->prefix . 'abandoned';
 
-	if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+	if($wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) != $table_name ) {
 		abandoned_create_table();
 	}
 
@@ -92,15 +87,15 @@ function insert_table_data($arr_data) {
 	);
 }
 
-add_action( 'wp_enqueue_scripts', 'abandoned_assets');
+add_action( 'wp_enqueue_scripts', 'abandoned_assets' );
 function abandoned_assets() {
 	$href_checkout = '';
-	if(function_exists('wc_get_checkout_url')){
+	if(function_exists( 'wc_get_checkout_url' ) ){
 		$href_checkout = wc_get_checkout_url();
 	}
-    wp_enqueue_script( 'abandoned-orders', plugins_url( '/assets/abandoned-script.js', __FILE__ ), array('jquery') );
+    wp_enqueue_script( 'abandoned-orders', plugins_url( '/assets/abandoned-script.js', __FILE__ ), array( 'jquery' ) );
 	wp_localize_script('abandoned-orders', 'abandonedPlugin', array(
-		'ajaxurl' => admin_url('admin-ajax.php'),
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		'href_checkout' => $href_checkout,
 		'nonce' => wp_create_nonce( 'abandoned' ),
 		'selectors' => array(
@@ -116,23 +111,23 @@ function abandoned_assets() {
 	));
 }
 
-add_action( 'admin_menu', 'abandoned_admin_page');
-function abandoned_admin_page(){
-	$hook_suffix = add_menu_page( __('Abandoned orders', 'abandoned-orders'), __('Abandoned', 'abandoned-orders'), 'manage_options', 'abandoned-orders', 'abandoned_menu_page', plugins_url( '/assets/images/icon.png', __FILE__ ), 80 );
+add_action( 'admin_menu', 'abandoned_admin_page' );
+function abandoned_admin_page() {
+	$hook_suffix = add_menu_page( __( 'Abandoned orders', 'abandoned-orders' ), __( 'Abandoned', 'abandoned-orders' ), 'manage_options', 'abandoned-orders', 'abandoned_menu_page', plugins_url( '/assets/images/icon.png', __FILE__ ), 80 );
 	add_action( "admin_print_scripts-{$hook_suffix}", 'abandoned_admin_scripts' );
-	add_submenu_page( 'abandoned-orders', __('Settings', 'abandoned-orders'), __('Abandoned orders', 'abandoned-orders'), 'manage_options', 'abandoned-orders', 'abandoned_menu_page', 1 );
-	add_submenu_page( 'abandoned-orders', __('Settings', 'abandoned-orders'), __('Settings', 'abandoned-orders'), 'manage_options', 'abandoned-settings', 'abandoned_settings_page', 2 );
+	add_submenu_page( 'abandoned-orders', __( 'Settings', 'abandoned-orders' ), __( 'Abandoned orders', 'abandoned-orders' ), 'manage_options', 'abandoned-orders', 'abandoned_menu_page', 1 );
+	add_submenu_page( 'abandoned-orders', __( 'Settings', 'abandoned-orders' ), __( 'Settings', 'abandoned-orders' ), 'manage_options', 'abandoned-settings', 'abandoned_settings_page', 2 );
 }
-function abandoned_menu_page(){
-	require plugin_dir_path(__FILE__) . 'assets/template/abandoned-options.php';
+function abandoned_menu_page() {
+	require plugin_dir_path( __FILE__ ) . 'assets/template/abandoned-options.php';
 }
-function abandoned_settings_page(){
+function abandoned_settings_page() {
 	require plugin_dir_path( __FILE__ ) . 'assets/template/abandoned-settings.php';
 }
 
-function abandoned_admin_scripts(){
-	wp_enqueue_style( 'abandoned-main-style', plugins_url('/assets/admin-main.css', __FILE__) );
-	wp_enqueue_script( 'abandoned-main-js', plugins_url( '/assets/admin-main.js', __FILE__ ), array('jquery'), false, true );
+function abandoned_admin_scripts() {
+	wp_enqueue_style( 'abandoned-main-style', plugins_url('/assets/admin-main.css', __FILE__ ) );
+	wp_enqueue_script( 'abandoned-main-js', plugins_url( '/assets/admin-main.js', __FILE__ ), array( 'jquery' ), false, true );
 }
 
 function abandoned_activate() {
@@ -164,18 +159,18 @@ function abandoned_custom_settings() {
 	register_setting( 'abandoned_general_group', 'price' );
 	register_setting( 'abandoned_general_group', 'trigger_element' );
 	register_setting( 'abandoned_general_group', 'event_el' );
-	add_settings_section( 'abandoned_general_section', __('Choosing a selector for an element', 'abandoned-orders'), '', 'abandoned-orders' );
-	add_settings_section( 'abandoned_trigger_section', __('Element and trigger selection', 'abandoned-orders'), function () {
-		echo __('An event that will trigger a client data record', 'abandoned-orders');
+	add_settings_section( 'abandoned_general_section', __( 'Selectors of elements for tracking', 'abandoned-orders' ), '', 'abandoned-orders' );
+	add_settings_section( 'abandoned_trigger_section', __( 'Element and trigger selection', 'abandoned-orders' ), function () {
+		echo __( 'An event that will trigger a client data record', 'abandoned-orders' );
 	}, 'abandoned-orders' );
-	add_settings_field( 'first_name', __('First Name', 'abandoned-orders'), 'abandoned_first_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'first_name' ) );
-	add_settings_field( 'last_name', __('Last Name', 'abandoned-orders'), 'abandoned_last_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'last_name' ) );
-	add_settings_field( 'phone', __('Phone', 'abandoned-orders'), 'abandoned_phone', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'phone' ) );
-	add_settings_field( 'email', __('Email', 'abandoned-orders'), 'abandoned_email', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'email' ) );
-	add_settings_field( 'product_name', __('Product Name', 'abandoned-orders'), 'abandoned_product_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'product_name' ) );
-	add_settings_field( 'price', __('Price', 'abandoned-orders'), 'abandoned_price', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'price' ) );
-	add_settings_field( 'trigger_element', __('Element', 'abandoned-orders'), 'abandoned_trigger_event', 'abandoned-orders', 'abandoned_trigger_section', array( 'label_for' => 'trigger_element' ) );
-	add_settings_field( 'event_el', __('Event', 'abandoned-orders'), 'abandoned_event', 'abandoned-orders', 'abandoned_trigger_section' );
+	add_settings_field( 'first_name', __( 'First Name', 'abandoned-orders' ), 'abandoned_first_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'first_name' ) );
+	add_settings_field( 'last_name', __( 'Last Name', 'abandoned-orders' ), 'abandoned_last_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'last_name' ) );
+	add_settings_field( 'phone', __( 'Phone', 'abandoned-orders' ), 'abandoned_phone', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'phone' ) );
+	add_settings_field( 'email', __( 'Email', 'abandoned-orders' ), 'abandoned_email', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'email' ) );
+	add_settings_field( 'product_name', __( 'Product Name', 'abandoned-orders' ), 'abandoned_product_name', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'product_name' ) );
+	add_settings_field( 'price', __( 'Price', 'abandoned-orders' ), 'abandoned_price', 'abandoned-orders', 'abandoned_general_section', array( 'label_for' => 'price' ) );
+	add_settings_field( 'trigger_element', __( 'Element', 'abandoned-orders' ), 'abandoned_trigger_event', 'abandoned-orders', 'abandoned_trigger_section', array( 'label_for' => 'trigger_element' ) );
+	add_settings_field( 'event_el', __( 'Event', 'abandoned-orders' ), 'abandoned_event', 'abandoned-orders', 'abandoned_trigger_section' );
 }
 function abandoned_first_name() {
 	$first_name_selection = esc_attr( get_option( 'first_name' ) );
@@ -207,11 +202,11 @@ function abandoned_trigger_event() {
 }
 
 function abandoned_event () {
-	$events = array('blur', 'focus', 'click');
+	$events = array( 'blur', 'focus', 'click' );
 	$event_el = esc_attr( get_option( 'event_el' ) );
 	echo '<select name="event_el">';
-		foreach ($events as $event) {
-			if($event == $event_el) {
+		foreach ( $events as $event ) {
+			if( $event == $event_el ) {
 		?>
 				<option value="<?php echo $event; ?>" selected="selected"><?php echo $event; ?></option>
 		<?php
